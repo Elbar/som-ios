@@ -36,6 +36,6 @@ class FacebookAuthentication {
     }
    
     class func isValidatedWithUrl(url: URL) -> Bool {
-        return url.scheme!.hasPrefix("fb\(FBSDKSettings.appID())") && url.host == "authorize"
+        return url.scheme!.hasPrefix("fb\(String(describing: FBSDKSettings.appID()))") && url.host == "authorize"
     }
 }

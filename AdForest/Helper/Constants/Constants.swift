@@ -12,13 +12,7 @@ import DeviceKit
 
 class Constants {
     struct  URL {
-    
-       // static let ipAddress =    "http://www.organikpazarcim.com/"
-        
-        static let ipAddress =    "http://adforest-testapp.scriptsbundle.com/"
-
-        // static let ipAddress =    "http://adforest-api.scriptsbundle.com/"
-        
+        static let ipAddress =    "http://www.baseUrl.com/"
         static let baseUrl =  ipAddress + "" + "wp-json/adforest/v1/"
         
         static let homeData = "home"
@@ -68,7 +62,6 @@ class Constants {
         static let packages = "packages"
         static let paymentConfirmation = "payment"
         static let paymentSuccess = "payment/complete"
-        //static let stripeCheckOutProcess = "payment/card"
         
         static let sentOffers = "message"
         static let offerOnAds = "message/inbox"
@@ -94,33 +87,20 @@ class Constants {
         
         static let deleteAccount = "profile/delete/user_account"
         static let termsPage = "page"
-        
-        //static let shop = "shop"
-       // static let shopDetail = "shop/detail"
-        //static let submitReview = "shop/submit_review"
-       // static let getShopReview = "shop/get_review"
+
         static let sellerList = "sellers"
-       // static let cart = "cart"
         
         static let appSettings = "app_extra"
         static let feedback = "app_extra/feedback"
     }
     
     struct customCodes {
-        //Live
-        //static let purchaseCode = "aaBMQWH8vIWZjZOR07nEyJbOnqrzWbHk-ios"
-        //static let securityCode = "212PQoz1zAICAxvui55AZuSTNhajjTTs-ios"
-        
-        //Test
-        static let purchaseCode = "aaBMQWH8vI4h28KOQEyJbOnqrzWbHk-ios"
-        static let securityCode = "212PQoz1zAICAxjajKIL67NhajjTTs-ios"
-        
-//        static let purchaseCode = "591b9028-79c3-4c88-9614-cf2c4fe9f4a9"
-//        static let securityCode = "591b0287934c889614cf4fe9f4a9"
+        static let purchaseCode = "Your purchase code"
+        static let securityCode = "your secret code"
     }
     
     struct googlePlacesAPIKey {
-        static let placesKey =  "AIzaSyB8KZq4oGyD1YzCJk3JvJU3EMPdB5ewo1s"
+        static let placesKey =  "Google Places API Key"
     }
     
     struct AppColor {

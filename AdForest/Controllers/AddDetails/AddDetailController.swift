@@ -469,7 +469,7 @@ class AddDetailController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             cell.btnShare = { () in
                 let shareTextArray = [objData.shareInfo.title, objData.shareInfo.link]
-                let activityController = UIActivityViewController(activityItems: shareTextArray, applicationActivities: nil)
+                let activityController = UIActivityViewController(activityItems: shareTextArray as [Any] as [Any], applicationActivities: nil)
                 self.presentVC(activityController)
             }
             

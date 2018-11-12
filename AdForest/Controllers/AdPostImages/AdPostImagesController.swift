@@ -154,7 +154,7 @@ class AdPostImagesController: UIViewController, UITableViewDelegate, UITableView
         for index in 0..<dataArray.count {
             if let objData = dataArray[index] as? AdPostField {
                 if objData.fieldType == "textarea" {
-                    if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 2)) as? DescriptionTableCell {
+                    if (tableView.cellForRow(at: IndexPath(row: index, section: 2)) as? DescriptionTableCell) != nil {
                         var obj = AdPostField()
                         obj.fieldType = "textarea"
                         obj.fieldVal = value

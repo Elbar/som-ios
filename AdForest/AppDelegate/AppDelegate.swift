@@ -20,11 +20,12 @@ import GooglePlacePicker
 import StoreKit
 import SwiftyStoreKit
 import GoogleMobileAds
+import NotificationBannerSwift
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate, NotificationBannerDelegate {
   
-
     var window: UIWindow?
 
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -33,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     let defaults = UserDefaults.standard
     var deviceFcmToken = "0"
     
-    var gViewController: UIViewController?
-    var mInterstitial: GADInterstitial!
-    
+//    var gViewController: UIViewController?
+//    var mInterstitial: GADInterstitial!
+//
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         keyboardManager.enable = true
@@ -84,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-        let willHandleByFacebook = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let willHandleByFacebook = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: (options[UIApplicationOpenURLOptionsKey.sourceApplication], a?!, String), annotation: options[UIApplicationOpenURLOptionsKey.annotation])
 
-      let willHandleByGoogle =  GIDSignIn.sharedInstance().handle(url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        let willHandleByGoogle =  GIDSignIn.sharedInstance().handle(url, sourceApplication: <#String?#>, annotation: <#Any?#>, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication? as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation],)
         
         return willHandleByGoogle || willHandleByFacebook
     }
@@ -317,7 +318,7 @@ extension AppDelegate  {
         guard let adID = remoteMessage.appData[AnyHashable("adId")]as? String else  {
             return
         }
-        guard let textFrom = remoteMessage.appData[AnyHashable("from")] as? String else {
+        gu(age.appData[AnyHashable("from")] as? String) != nil; e;) != nillse {
             return
         }
         guard let textTitle = remoteMessage.appData[AnyHashable("title")] as? String else  {
@@ -339,14 +340,52 @@ extension AppDelegate  {
             return
         }
         
-        let content = UNMutableNotificationContent()
-        content.title = textTitle
-        content.body = userMessage
-        content.badge = 1
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
-        let request = UNNotificationRequest(identifier: "AdForest", content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { (error) in
-            print(error)
+//        let content = UNMutableNotificationContent()
+//        content.title = textTitle
+//        content.body = userMessage
+//        content.badge = 1
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+//        let request = UNNotificationRequest(identifier: "AdForest", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request) { (error) in
+//            print(error)
+//        }
+        
+       let  banner = NotificationBanner(title: textTitle, subtitle: userMessage, style: .success)
+        banner.autoDismiss = true
+        banner.delegate = self
+        banner.show()
+        banner.onTap = {
+            if topic == "broadcast" {
+                banner.dismiss()
+                self.moveToHome()
+            }
+            if topic == "chat" {
+                banner.dismiss()
+                let chatVC = self.storyboard.instantiateViewController(withIdentifier: "ChatController") as! ChatController
+                chatVC.ad_id = adID
+                chatVC.sender_id = senderID
+                chatVC.receiver_id = receiverID
+                chatVC.messageType = type
+                self.presentController(ShowVC: chatVC)
+            }
         }
+        banner.onSwipeUp = {
+            banner.dismiss()
+        }
+    }
+    func notificationBannerWillAppear(_ banner: BaseNotificationBanner) {
+        
+    }
+    
+    func notificationBannerDidAppear(_ banner: BaseNotificationBanner) {
+        
+    }
+    
+    func notificationBannerWillDisappear(_ banner: BaseNotificationBanner) {
+        
+    }
+    
+    func notificationBannerDidDisappear(_ banner: BaseNotificationBanner) {
+        
     }
 }

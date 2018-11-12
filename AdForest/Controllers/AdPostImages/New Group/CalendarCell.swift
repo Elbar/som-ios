@@ -47,7 +47,7 @@ class CalendarCell: UITableViewCell {
             self.currentDate = selectedDate
             
             return
-        }, cancel: { ActionStringCancelBlock in return }, origin: sender as! UIView)
+        }, cancel: { ActionStringCancelBlock in return }, origin: sender as? UIView)
         datePicker?.show()
     }
     

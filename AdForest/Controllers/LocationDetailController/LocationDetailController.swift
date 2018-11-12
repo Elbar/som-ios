@@ -9,20 +9,13 @@
 import UIKit
 import NVActivityIndicatorView
 
-class LocationDetailController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable, UISearchBarDelegate {
+class LocationDetailController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NVActivityIndicatorViewable {
 
     //MARK:- Outlets
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
-        }
-    }
-    @IBOutlet weak var searchBar: UISearchBar! {
-        didSet {
-            searchBar.placeholder = ""
-            searchBar.delegate = self
-            searchBar.sizeToFit()
         }
     }
     

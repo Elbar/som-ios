@@ -86,6 +86,7 @@ class Splash: UIViewController, NVActivityIndicatorViewable {
                 self.defaults.set(successResponse.data.notLoginMsg, forKey: "notLogin")
                 self.defaults.set(successResponse.data.isAppOpen, forKey: "isAppOpen")
                 self.defaults.set(successResponse.data.showNearby, forKey: "showNearBy")
+                self.defaults.set(successResponse.data.appPageTestUrl, forKey: "shopUrl")
                 //Save Shop title to show in Shop Navigation Title
                 self.defaults.set(successResponse.data.menu.shop, forKey: "shopTitle")
                 self.isAppOpen = successResponse.data.isAppOpen

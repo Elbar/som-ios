@@ -55,7 +55,7 @@ class RadioButtonTableViewCell : UITableViewCell {
             radioButtonCell.dataArray[indexPath].isSelected = true
         }
         
-        for (i, value) in radioButtonCell.dataArray.enumerated() {
+        for (i, _) in radioButtonCell.dataArray.enumerated() {
             if i != indexPath {
                 radioButtonCell.dataArray[i].isSelected = false
             }

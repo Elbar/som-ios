@@ -387,7 +387,6 @@ class LeftController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK-: Logout user
     func logoutUser() {
         let param: [String: Any] = ["firebase_id": ""]
-        print(param)
         self.showLoader()
         AddsHandler.sendFirebaseToken(parameter: param as NSDictionary, success: { (successResponse) in
             self.stopAnimating()
@@ -413,9 +412,7 @@ class LeftController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.presentVC(alert)
         }
     }
-    
     //MARK:- Table View Delegate Methods
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
